@@ -82,7 +82,7 @@ class AgoraUser(object):
                                              end_node=interest_node)
         new_interest_node = user_interests.next()
         new_interest_node.set_properties({'description': interest_description})
-        print new_interest_node
+        #print new_interest_node
 
 
 

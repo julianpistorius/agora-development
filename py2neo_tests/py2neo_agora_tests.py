@@ -31,6 +31,6 @@ print "user interests", agora_user.user_interests
 
 agora_user.add_interest("cb1ae529-e674-4413-9244-df3b67c4e871", "Just starting out and need help learning the python basics.")
 user_interests = agora_user.user_interests
-# print 'user interests added', user_interests, user_interests.description
+print 'user interests with added', user_interests
 
 
