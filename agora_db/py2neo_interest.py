@@ -22,3 +22,6 @@ class AgoraInterest(object):
         created_interest.add_labels(AgoraLabels.INTEREST)
         return created_interest
 
+    def get_interest(self):
+        pass
+

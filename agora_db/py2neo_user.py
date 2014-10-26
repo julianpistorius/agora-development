@@ -1,6 +1,7 @@
 __author__ = 'Marnee Dearman'
 import py2neo
 import uuid
+import collections
 from py2neo import neo4j
 from agora_types import AgoraRelationship, AgoraLabels
 
@@ -57,7 +58,12 @@ class AgoraUser(object):
         user_node = user_nodes.next()
         user_interests = self.graph_db.match(start_node=user_node, rel_type=AgoraRelationship.INTERESTED_IN,
                                              end_node=None)
-        return [item.end_node["name"] for item in user_interests]
+        #create a list of tuples of interests and the users's relationship to them
+        interests_list = []
+        for item in user_interests:
+            interests_list.append((item.end_node["name"], item["description"]))
+        # return [item.end_node["name"] for item in user_interests]
+        return interests_list
 
     def add_interest(self, interest_id, interest_description):
         """ Add interest to user
