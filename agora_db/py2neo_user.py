@@ -4,6 +4,7 @@ import uuid
 from py2neo import neo4j
 from agora_types import AgoraRelationship, AgoraLabels
 
+
 class AgoraUser(object):
     def __init__(self):
         self.name = None
@@ -14,7 +15,7 @@ class AgoraUser(object):
         self.is_tutor = False
         self.is_visible = True
         self.is_available_for_in_person = True
-        #self._interests_list = None
+        # self._interests_list = None
         self.is_admin = False
         self.graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
@@ -52,29 +53,37 @@ class AgoraUser(object):
         """ get user interests
         :return: list of interests
         """
-        user_nodes = self.graph_db.find(AgoraLabels.User, "name", self.name)
+        user_nodes = self.graph_db.find(AgoraLabels.User, "unique_id", self.unique_id)
         user_node = user_nodes.next()
-        user_interests = self.graph_db.match(start_node=user_node, rel_type=AgoraRelationship.INTERESTED_IN, end_node=None)
+        user_interests = self.graph_db.match(start_node=user_node, rel_type=AgoraRelationship.INTERESTED_IN,
+                                             end_node=None)
         return [item.end_node["name"] for item in user_interests]
 
-    def add_interest(self, interest, interest_description):
+    def add_interest(self, interest_id, interest_description):
         """ Add interest to user
         :param interest:
         :return: none
         """
-        #check that interest_description is a dictionary?
+        # check that interest_description is a dictionary?
 
-        user_nodes = self.graph_db.find(AgoraLabels.User, "name", self.name)
+        #get user node with unique id
+        user_nodes = self.graph_db.find(AgoraLabels.User, "unique_id", self.unique_id)
         user_node = user_nodes.next()
 
-        interest_nodes = self.find(AgoraLabels.INTEREST, "name", interest)
+        #get interest node with interest_id (interest unique_id)
+        interest_nodes = self.graph_db.find(AgoraLabels.INTEREST, "unique_id", interest_id)
         interest_node = interest_nodes.next()
 
-        new_relationship = neo4j.Path(user_node, AgoraRelationship.INTERESTED_IN, interest_node).get_or_create(graph_db=self.graph_db)
-        new_relationship.set_properties(interest_description)
-    #dlfkgjdslgkjdfgkfdg
+        #create relationship between user and interest node
+        neo4j.Path(user_node, AgoraRelationship.INTERESTED_IN, interest_node).get_or_create(graph_db=self.graph_db)
 
-    #dlkdfgf;dsghfd;gkh
+        #get INTERESTED_IN relationship between user and interest -- set the relationship description
+        user_interests = self.graph_db.match(start_node=user_node, rel_type=AgoraRelationship.INTERESTED_IN,
+                                             end_node=interest_node)
+        new_interest_node = user_interests.next()
+        new_interest_node.set_properties({'description': interest_description})
+        print new_interest_node
+
 
 
 
