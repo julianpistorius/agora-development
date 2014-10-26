@@ -16,8 +16,9 @@ class AgoraInterest(object):
         create an interest node based on the class attributes
         :return: node
         """
-        self.unique_id = uuid.uuid4()
+        self.unique_id = str(uuid.uuid4())
         new_interest = neo4j.Node.abstract(name=self.name, desciption=self.description, unique_id=self.unique_id)
-        new_interest, = self.graph_db.create(new_interest)
-        new_interest.add_labels(AgoraLabels.INTEREST)
+        created_interest, = self.graph_db.create(new_interest)
+        created_interest.add_labels(AgoraLabels.INTEREST)
+        return created_interest
 

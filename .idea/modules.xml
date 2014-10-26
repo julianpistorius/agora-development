@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AgoraDev.iml" filepath="$PROJECT_DIR$/.idea/AgoraDev.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/FalconTutorial.iml" filepath="$PROJECT_DIR$/.idea/FalconTutorial.iml" />
     </modules>
   </component>

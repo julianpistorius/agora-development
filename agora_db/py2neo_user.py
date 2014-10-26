@@ -10,12 +10,12 @@ class AgoraUser(object):
         self.unique_id = None
         self.description = None
         self.email = None
-        self.is_mentor = None
-        self.is_tutor = None
-        self.is_visible = None
-        self.is_available_for_in_person = None
+        self.is_mentor = False
+        self.is_tutor = False
+        self.is_visible = True
+        self.is_available_for_in_person = True
         #self._interests_list = None
-        self.is_admin = None
+        self.is_admin = False
         self.graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
     def create_user(self):
@@ -23,17 +23,29 @@ class AgoraUser(object):
         create a new user based on the attributes
         :return: node
         """
-        self.unique_id = uuid.uuid4()
+        self.unique_id = str(uuid.uuid4())
         new_user_properties = {
             "name": self.name,
             "unique_id": self.unique_id,
             "email": self.email,
             "is_mentor": self.is_mentor,
             "is_tutor": self.is_tutor,
-            "is_visible": self.is_visible}
-        new_user = neo4j.Node.abstract(new_user_properties)
+            "is_visible": self.is_visible,
+            "is_available_for_in_person": self.is_available_for_in_person,
+            "is_admin": self.is_admin}
+        new_user = neo4j.Node.abstract(
+            name=self.name,
+            unique_id=self.unique_id,
+            email=self.email,
+            is_mentor=self.is_mentor,
+            is_tutor=self.is_tutor,
+            is_visible=self.is_visible,
+            is_available_for_in_person=self.is_available_for_in_person,
+            is_admin=self.is_admin
+        )
         new_user, = self.graph_db.create(new_user)
         new_user.add_labels(AgoraLabels.User)
+        return new_user
 
     @property
     def user_interests(self):
