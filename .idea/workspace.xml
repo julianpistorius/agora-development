@@ -28,11 +28,31 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="py2neo_samples.py" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="py2neo_user.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/agora_db/py2neo_user.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="1446" max-vertical-offset="1938">
+                  <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="py2neo_samples.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/agora_db/py2neo_samples.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.18307692" vertical-offset="0" max-vertical-offset="952">
-                  <caret line="7" column="46" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="46" />
+                <state vertical-scroll-proportion="0.2169059" vertical-offset="0" max-vertical-offset="1071">
+                  <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="py2neo_get_user_tests.py" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/py2neo_tests/py2neo_get_user_tests.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+                  <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -42,7 +62,7 @@
             <entry file="file://$PROJECT_DIR$/py2neo_tests/py2neo_agora_tests.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
-                  <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                  <caret line="18" column="38" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="38" />
                   <folding />
                 </state>
               </provider>
@@ -82,11 +102,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="py2neo_user.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="py2neo_user.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/agora_db/py2neo_user.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7864992" vertical-offset="1131" max-vertical-offset="1904">
-                  <caret line="96" column="49" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
+                <state vertical-scroll-proportion="0.7064364" vertical-offset="1233" max-vertical-offset="1938">
+                  <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -134,14 +154,15 @@
         <option value="$PROJECT_DIR$/agora_db/__init__.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_get_users.py" />
         <option value="$PROJECT_DIR$/agora_db/agora_relationship.py" />
-        <option value="$PROJECT_DIR$/agora_db/py2neo_samples.py" />
         <option value="$PROJECT_DIR$/agora_db/agora_types.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_achievement.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_goal.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_group.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_interest.py" />
         <option value="$PROJECT_DIR$/py2neo_tests/py2neo_agora_tests.py" />
+        <option value="$PROJECT_DIR$/py2neo_tests/py2neo_get_user_tests.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_user.py" />
+        <option value="$PROJECT_DIR$/agora_db/py2neo_samples.py" />
       </list>
     </option>
   </component>
@@ -243,7 +264,45 @@
       <console-settings />
     </option>
   </component>
-  <component name="RunManager" selected="Python.py2neo_agora_tests">
+  <component name="RunManager" selected="Python.py2neo_samples (1)">
+    <configuration default="false" name="py2neo_get_user_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py2neo_tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AgoraDev" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/py2neo_tests/py2neo_get_user_tests.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="py2neo_user" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/agora_db" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AgoraDev" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/agora_db/py2neo_user.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="false" name="py2neo_get_users" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -259,26 +318,6 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/py2neo/py2neo_get_users.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="py2neo_samples" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py2neo" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="FalconTutorial" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/py2neo/py2neo_samples.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -299,42 +338,6 @@
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="py2neo_samples (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/agora_db" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="FalconTutorial" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/agora_db/py2neo_samples.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="py2neo_user" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/agora_db" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="AgoraDev" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/agora_db/py2neo_user.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -479,21 +482,38 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
+    <configuration default="false" name="py2neo_samples (1)" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Marnee Dearman\PycharmProjects\VirtualEnvs\AgoraDev\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/agora_db" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AgoraDev" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/agora_db/py2neo_samples.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.py2neo_users" />
-      <item index="1" class="java.lang.String" itemvalue="Python.py2neo_get_users" />
-      <item index="2" class="java.lang.String" itemvalue="Python.py2neo_samples" />
-      <item index="3" class="java.lang.String" itemvalue="Python.py2neo_agora_tests" />
-      <item index="4" class="java.lang.String" itemvalue="Python.py2neo_samples (1)" />
-      <item index="5" class="java.lang.String" itemvalue="Python.py2neo_user" />
+      <item index="1" class="java.lang.String" itemvalue="Python.py2neo_samples (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.py2neo_get_user_tests" />
+      <item index="3" class="java.lang.String" itemvalue="Python.py2neo_user" />
+      <item index="4" class="java.lang.String" itemvalue="Python.py2neo_get_users" />
+      <item index="5" class="java.lang.String" itemvalue="Python.py2neo_agora_tests" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.py2neo_agora_tests" />
-        <item index="1" class="java.lang.String" itemvalue="Python.py2neo_user" />
-        <item index="2" class="java.lang.String" itemvalue="Python.py2neo_samples (1)" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.py2neo_get_user_tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python.py2neo_agora_tests" />
+        <item index="2" class="java.lang.String" itemvalue="Python.py2neo_user" />
         <item index="3" class="java.lang.String" itemvalue="Python.py2neo_get_users" />
-        <item index="4" class="java.lang.String" itemvalue="Python.py2neo_samples" />
       </list>
     </recent_temporary>
   </component>
@@ -520,7 +540,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12118019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39891893" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26702702" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26702702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -550,7 +570,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -725,23 +745,31 @@
     <entry file="file://$PROJECT_DIR$/py2neo_tests/py2neo_agora_tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agora_db/py2neo_samples.py">
+    <entry file="file://$PROJECT_DIR$/py2neo_tests/py2neo_get_user_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18307692" vertical-offset="0" max-vertical-offset="952">
-          <caret line="7" column="46" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/agora_db/py2neo_user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7864992" vertical-offset="1131" max-vertical-offset="1904">
-          <caret line="96" column="49" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1446" max-vertical-offset="1938">
+          <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agora_db/py2neo_samples.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2169059" vertical-offset="0" max-vertical-offset="1071">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
           <folding />
         </state>
       </provider>

@@ -92,8 +92,10 @@ class AgoraUser(object):
         #print new_interest_node
 
     def get_user(self):
-        user_nodes = list(self.graph_db.find(AgoraLabels.User, "email", self.email))
-        if len(user_nodes) > 1:
+        user_nodes = self.graph_db.find(AgoraLabels.User, "email", self.email)
+        if len(list(user_nodes)) == 1:
+            user_node = user_nodes.next()
+            self.name = user_nodes["name"]
             #there is a problem get me outta here
 
     def update_user(self):
