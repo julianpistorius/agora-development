@@ -91,6 +91,9 @@ class AgoraUser(object):
         new_interest_node.set_properties({'description': interest_description})
         #print new_interest_node
 
+    def update_user(self):
+        pass
+
 
 
 
