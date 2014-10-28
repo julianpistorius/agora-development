@@ -85,8 +85,8 @@
           <file leaf-file-name="py2neo_user.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/agora_db/py2neo_user.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.58712715" vertical-offset="1071" max-vertical-offset="1819">
-                  <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.6138148" vertical-offset="255" max-vertical-offset="1819">
+                  <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
                   <folding />
                 </state>
               </provider>
@@ -740,8 +740,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/agora_db/py2neo_user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58712715" vertical-offset="1071" max-vertical-offset="1819">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6138148" vertical-offset="255" max-vertical-offset="1819">
+          <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
           <folding />
         </state>
       </provider>

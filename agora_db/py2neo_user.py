@@ -27,15 +27,15 @@ class AgoraUser(object):
         :return: node
         """
         self.unique_id = str(uuid.uuid4())
-        new_user_properties = {
-            "name": self.name,
-            "unique_id": self.unique_id,
-            "email": self.email,
-            "is_mentor": self.is_mentor,
-            "is_tutor": self.is_tutor,
-            "is_visible": self.is_visible,
-            "is_available_for_in_person": self.is_available_for_in_person,
-            "is_admin": self.is_admin}
+        # new_user_properties = {
+        #     "name": self.name,
+        #     "unique_id": self.unique_id,
+        #     "email": self.email,
+        #     "is_mentor": self.is_mentor,
+        #     "is_tutor": self.is_tutor,
+        #     "is_visible": self.is_visible,
+        #     "is_available_for_in_person": self.is_available_for_in_person,
+        #     "is_admin": self.is_admin}
         new_user = neo4j.Node.abstract(
             name=self.name,
             unique_id=self.unique_id,
