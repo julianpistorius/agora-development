@@ -7,7 +7,7 @@ from agora_types import AgoraRelationship, AgoraLabels
 
 
 class AgoraUser(object):
-    def __init__(self):
+    def __init__(self, graph_db):
         self.name = None
         self.unique_id = None
         self.description = None
@@ -18,7 +18,8 @@ class AgoraUser(object):
         self.is_available_for_in_person = True
         # self._interests_list = None
         self.is_admin = False
-        self.graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
+        self.graph_db = graph_db
+            #neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
     def create_user(self):
         """

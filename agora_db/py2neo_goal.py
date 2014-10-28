@@ -5,27 +5,25 @@ import collections
 from py2neo import neo4j
 from agora_types import AgoraRelationship, AgoraLabels
 
-class AgoraGroup(object):
+class AgoraGoal(object):
     def __init__(self, graph_db):
         self.name = None
         self.unique_id = None
         self.description = None
-        self.is_open = None
-        self.is_invite_only = None
-        self.meeting_location = None
-        self.next_meeting_date = None
-        self.members = []
         self.interests = []
+        self.achievements = []
         self.graph_db = graph_db
+        #neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
-    def create_group(self):
+    def create_goal(self):
         pass
 
-    def update_group(self):
+    def update_goal(self):
         pass
 
-    def close_group(self):
+    def link_goal_to_achievement(self):
         pass
 
-
+    def delete_goal(self):
+        pass
 

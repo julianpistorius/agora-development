@@ -1,10 +1,14 @@
 __author__ = 'Marnee Dearman'
 from agora_db.py2neo_user import AgoraUser
 from agora_db.py2neo_interest import AgoraInterest
+import py2neo
+from py2neo import neo4j
 
 import time
 
-agora_user = AgoraUser()
+graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
+
+agora_user = AgoraUser(graph_db)
 
 # agora_user.name = "Marnee"
 # print "Marnee user", agora_user.user_interests
@@ -25,7 +29,7 @@ agora_user = AgoraUser()
 # print created_interest
 
 #add interest to user
-agora_user = AgoraUser()
+agora_user = AgoraUser(graph_db)
 agora_user.unique_id = "7e0570a4-15db-4b45-8085-88135334876e"
 print "user interests", agora_user.user_interests
 

@@ -14,6 +14,7 @@ class AgoraRelationship(object):
 
 class AgoraLabels(object):
     ACHIEVEMENT = "ACHIEVEMENT"
+    GOAL = "GOAL"
     INTEREST = "INTEREST"
     LOCATION = "LOCATION"
     HEAD = "HEAD"
