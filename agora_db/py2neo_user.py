@@ -18,8 +18,7 @@ class AgoraUser(object):
         self.is_available_for_in_person = True
         # self._interests_list = None
         self.is_admin = False
-        self.graph_db = graph_db
-            #neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
+        self.graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
     def create_user(self):
         """
@@ -27,26 +26,28 @@ class AgoraUser(object):
         :return: node
         """
         self.unique_id = str(uuid.uuid4())
-        # new_user_properties = {
-        #     "name": self.name,
-        #     "unique_id": self.unique_id,
-        #     "email": self.email,
-        #     "is_mentor": self.is_mentor,
-        #     "is_tutor": self.is_tutor,
-        #     "is_visible": self.is_visible,
-        #     "is_available_for_in_person": self.is_available_for_in_person,
-        #     "is_admin": self.is_admin}
-        new_user = neo4j.Node.abstract(
-            name=self.name,
-            unique_id=self.unique_id,
-            email=self.email,
-            is_mentor=self.is_mentor,
-            is_tutor=self.is_tutor,
-            is_visible=self.is_visible,
-            is_available_for_in_person=self.is_available_for_in_person,
-            is_admin=self.is_admin
-        )
-        new_user, = self.graph_db.create(new_user)
+        new_user_properties = {
+            "name": self.name,
+            "unique_id": self.unique_id,
+            "email": self.email,
+            "is_mentor": self.is_mentor,
+            "is_tutor": self.is_tutor,
+            "is_visible": self.is_visible,
+            "is_available_for_in_person": self.is_available_for_in_person,
+            "is_admin": self.is_admin}
+        # new_user = neo4j.Node.abstract(
+        #     name=self.name,
+        #     unique_id=self.unique_id,
+        #     email=self.email,
+        #     is_mentor=self.is_mentor,
+        #     is_tutor=self.is_tutor,
+        #     is_visible=self.is_visible,
+        #     is_available_for_in_person=self.is_available_for_in_person,
+        #     is_admin=self.is_admin
+        # )
+        # new_user, = self.graph_db.create(new_user)
+        #(index_name='User', key='email', value="ralphie@email.com", properties={'unique_id': '7e0570a4-15db-4b45-8085-88135334876e'})
+        new_user = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabels.User, key='email', value=self.email, properties=new_user_properties)
         new_user.add_labels(AgoraLabels.User)
         return new_user
 
@@ -93,9 +94,9 @@ class AgoraUser(object):
 
     def get_user(self):
         user_nodes = self.graph_db.find(AgoraLabels.User, "email", self.email)
-        if len(list(user_nodes)) == 1:
-            user_node = user_nodes.next()
-            self.name = user_nodes["name"]
+        user_node = user_nodes.next()
+        self.name = user_node["name"]
+        self.unique_id = user_node["unique_id"]
 
     def update_user(self):
         pass

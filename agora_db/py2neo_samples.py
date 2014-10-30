@@ -15,12 +15,14 @@ graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 # print node["name"]
 #node = nodes_list.next()
 
+
+
 new_indexed_node = graph_db.get_or_create_indexed_node(index_name='User', key='email', value="ralphie@email.com", properties={'unique_id': '7e0570a4-15db-4b45-8085-88135334876e'})
 indexes = graph_db.get_indexes(neo4j.Node)
 print indexes
-graph_db.delete(new_indexed_node) #this deletes the index too.  sure wish this was in the documenfuckingtation
-indexes = graph_db.get_indexes(neo4j.Node)
-print indexes
+# graph_db.delete(new_indexed_node) #this deletes the index too.  sure wish this was in the documenfuckingtation
+# indexes = graph_db.get_indexes(neo4j.Node)
+# print indexes
 # graph_db.get_index(neo4j.Node, 'User')
 
 
