@@ -96,7 +96,6 @@ class AgoraUser(object):
         if len(list(user_nodes)) == 1:
             user_node = user_nodes.next()
             self.name = user_nodes["name"]
-            #there is a problem get me outta here
 
     def update_user(self):
         pass

@@ -4,16 +4,30 @@ from py2neo import neo4j
 
 graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
-#get a user name
-node = graph_db.find("User", "email", "ralphie@email.com")
-node_list = list(node)
-print node_list
+# #get a user name
+# node = graph_db.find("User", "email", "ralphie@email.com")
+# node_list = list(node)
+# print node_list
+#
+# nodes_list = graph_db.find("User", "email", "ralphie@email.com")
+# #print (len(list(nodes_list)))
+# node = nodes_list.next()
+# print node["name"]
+#node = nodes_list.next()
 
-nodes_list = graph_db.find("User", "email", "ralphie@email.com")
-#print (len(list(nodes_list)))
-if len(list(nodes_list)) == 1:
-    print 'if'
-    print nodes_list["name"]
+new_indexed_node = graph_db.get_or_create_indexed_node(index_name='User', key='email', value="ralphie@email.com", properties={'unique_id': '7e0570a4-15db-4b45-8085-88135334876e'})
+indexes = graph_db.get_indexes(neo4j.Node)
+print indexes
+graph_db.delete(new_indexed_node) #this deletes the index too.  sure wish this was in the documenfuckingtation
+indexes = graph_db.get_indexes(neo4j.Node)
+print indexes
+# graph_db.get_index(neo4j.Node, 'User')
+
+
+# print new_indexed_node
+# new_indexed_node.add_labels("User")
+
+# graph_db.delete_index(new_indexed_node, 'User')
 
 
 #get a study group
