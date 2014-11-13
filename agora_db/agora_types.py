@@ -11,18 +11,20 @@ class AgoraRelationship(object):
     LOCATED_IN = "LOCATED_IN"
     HEADS = "HEADS"
     ACHIEVED = "ACHIEVED"
+    HAS_GOAL = "HAS_GOAL"
+    GOAL_INTEREST = "GOAL_INTEREST"
 
-class AgoraLabels(object):
+class AgoraLabel(object):
     ACHIEVEMENT = "ACHIEVEMENT"
     GOAL = "GOAL"
     INTEREST = "INTEREST"
     LOCATION = "LOCATION"
     HEAD = "HEAD"
     STUDYGROUP = "STUDYGROUP"
-    User = "User"
+    USER = "USER"
     LOCATIONS = "LOCATIONS"
     ASSOCIATION = "ASSOCIATION"
-    Admin = "Admin"
+    ADMIN = "ADMIN"
 
 # class AgoraRelationship(Enum):
 #     INTERESTED_IN = "INTERESTED_IN",

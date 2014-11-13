@@ -3,7 +3,7 @@ import py2neo
 import uuid
 import collections
 from py2neo import neo4j
-from agora_types import AgoraRelationship, AgoraLabels
+from agora_types import AgoraRelationship, AgoraLabel
 
 class AgoraGroup(object):
     def __init__(self, graph_db):
