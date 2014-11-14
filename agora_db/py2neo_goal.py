@@ -10,6 +10,8 @@ class AgoraGoal(object):
         self.title = None
         self.unique_id = None
         self.description = None
+        self.start_date = None
+        self.end_date = None
         self.interests = []
         self.achievements = []
         self.graph_db = graph_db
@@ -26,7 +28,9 @@ class AgoraGoal(object):
         new_goal_properties = {
             "title": self.title,
             "description": self.description,
-            "unique_id": self.unique_id}
+            "unique_id": self.unique_id,
+            "start_date": self.start_date,
+            "end_date": self.end_date}
 
         new_goal = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.GOAL, key='unique_id',
                                                             value=self.unique_id,

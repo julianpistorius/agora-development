@@ -1,7 +1,7 @@
 __author__ = 'Marnee Dearman'
 
 class AgoraRelationship(object):
-    INTERESTED_IN = "INTERESTED_IN",
+    INTERESTED_IN = "INTERESTED_IN"
     SPECIALIZED_IN = "SPECIALIZED_IN"
     IS_A = "IS_A"
     LEADS = "LEADS"
@@ -25,6 +25,7 @@ class AgoraLabel(object):
     LOCATIONS = "LOCATIONS"
     ASSOCIATION = "ASSOCIATION"
     ADMIN = "ADMIN"
+    ORGANIZATION = "ORGANIZATION"
 
 # class AgoraRelationship(Enum):
 #     INTERESTED_IN = "INTERESTED_IN",
