@@ -51,21 +51,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="py2neo_interest.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/agora_db/py2neo_interest.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1088">
-                  <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="py2neo_group.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/agora_db/py2neo_group.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1462">
-                  <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="801" max-vertical-offset="1581">
+                  <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -84,8 +74,8 @@
           <file leaf-file-name="py2neo_create_dev_agora_db.py" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/py2neo_tests/py2neo_create_dev_agora_db.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-1.4334415" vertical-offset="2192" max-vertical-offset="3672">
-                  <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.4707792" vertical-offset="2192" max-vertical-offset="3672">
+                  <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -128,8 +118,8 @@
           <file leaf-file-name="py2neo_group.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/agora_db/py2neo_group.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1462">
-                  <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="776" max-vertical-offset="1581">
+                  <caret line="70" column="16" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -138,18 +128,18 @@
           <file leaf-file-name="py2neo_user.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/agora_db/py2neo_user.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="568" max-vertical-offset="2703">
-                  <caret line="148" column="11" selection-start-line="148" selection-start-column="11" selection-end-line="148" selection-end-column="11" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="1588" max-vertical-offset="2703">
+                  <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="py2neo_goal.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="py2neo_goal.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/agora_db/py2neo_goal.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.74491394" vertical-offset="51" max-vertical-offset="1394">
-                  <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="143" max-vertical-offset="1615">
+                  <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
@@ -160,6 +150,16 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
                   <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="py2neo_interest.py" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/agora_db/py2neo_interest.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.5477308" vertical-offset="551" max-vertical-offset="1190">
+                  <caret line="53" column="11" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
                   <folding />
                 </state>
               </provider>
@@ -192,7 +192,6 @@
         <option value="$PROJECT_DIR$/py2neo_tests/py2neo_agora_interests_test.py" />
         <option value="$PROJECT_DIR$/py2neo_tests/py2neo_agora_tests.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_achievement.py" />
-        <option value="$PROJECT_DIR$/agora_db/py2neo_interest.py" />
         <option value="$PROJECT_DIR$/look/images.py" />
         <option value="$PROJECT_DIR$/look/app.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
@@ -200,13 +199,14 @@
         <option value="$PROJECT_DIR$/falcon_test/app.py" />
         <option value="$PROJECT_DIR$/falcon_test/images.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_organizations.py" />
-        <option value="$PROJECT_DIR$/agora_db/py2neo_group.py" />
         <option value="$PROJECT_DIR$/agora_db/agora_types.py" />
         <option value="$PROJECT_DIR$/py2neo_tests/py2neo_create_indexes.py" />
         <option value="$PROJECT_DIR$/py2neo_tests/create_users_test.py" />
         <option value="$PROJECT_DIR$/py2neo_tests/py2neo_create_dev_agora_db.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_user.py" />
         <option value="$PROJECT_DIR$/agora_db/py2neo_goal.py" />
+        <option value="$PROJECT_DIR$/agora_db/py2neo_group.py" />
+        <option value="$PROJECT_DIR$/agora_db/py2neo_interest.py" />
       </list>
     </option>
   </component>
@@ -676,7 +676,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/agora_db/py2neo_interest.py</url>
-          <line>33</line>
+          <line>39</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
@@ -967,14 +967,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agora_db/py2neo_interest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1088">
-          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/falcon_test/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
@@ -994,14 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="276" max-vertical-offset="782">
           <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/agora_db/py2neo_group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1462">
-          <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1046,26 +1030,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/py2neo_tests/py2neo_create_dev_agora_db.py">
+    <entry file="file://$PROJECT_DIR$/agora_db/py2neo_goal.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4334415" vertical-offset="2192" max-vertical-offset="3672">
-          <caret line="77" column="35" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="143" max-vertical-offset="1615">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/agora_db/py2neo_user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="568" max-vertical-offset="2703">
-          <caret line="148" column="11" selection-start-line="148" selection-start-column="11" selection-end-line="148" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="364" max-vertical-offset="2703">
+          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/agora_db/py2neo_goal.py">
+    <entry file="file://$PROJECT_DIR$/agora_db/py2neo_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74491394" vertical-offset="51" max-vertical-offset="1394">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="776" max-vertical-offset="1581">
+          <caret line="70" column="16" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py2neo_tests/py2neo_create_dev_agora_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4707792" vertical-offset="2192" max-vertical-offset="3672">
+          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/agora_db/py2neo_interest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5477308" vertical-offset="551" max-vertical-offset="1190">
+          <caret line="53" column="11" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
           <folding />
         </state>
       </provider>

@@ -20,13 +20,22 @@ class AgoraGroup(object):
         self.graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
     @property
+    def group_node(self):
+        """
+        get a group node based on the unique id attribute
+        :return: neo4j.Node
+        """
+        return self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.STUDYGROUP,
+                                                        key='unique_id',
+                                                        value=self.unique_id)
+
+    @property
     def group_interests(self):
         """ get user interests
         :return: list of interests
         """
-        group_nodes = self.graph_db.find(AgoraLabel.STUDYGROUP, "unique_id", self.unique_id)
-        group_node = group_nodes.next()
-        group_interests = self.graph_db.match(start_node=group_node, rel_type=AgoraRelationship.INTERESTED_IN,
+        group_interests = self.graph_db.match(start_node=self.group_node,
+                                              rel_type=AgoraRelationship.INTERESTED_IN,
                                              end_node=None)
         #create a list of tuples of interests and the users's relationship to them
         interests_list = []
@@ -61,12 +70,10 @@ class AgoraGroup(object):
         link interests to a study group
         :return:
         """
-        group_node = self.graph_db.get_indexed_node(index_name=AgoraLabel.STUDYGROUP,
-                                               key='name', value=self.name)
         interest_node = self.graph_db.get_indexed_node(index_name=AgoraLabel.INTEREST,
                                                        key='unique_id', value=interest_id)
         #CREATE the RELATIONSHIP BETWEEN INTEREST AND GROUP
-        neo4j.Path(group_node, AgoraRelationship.INTERESTED_IN,
+        neo4j.Path(self.group_node, AgoraRelationship.INTERESTED_IN,
                    interest_node).get_or_create(graph_db=self.graph_db)
         #TODO set properties on RELATIONSHIP
 

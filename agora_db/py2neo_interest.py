@@ -13,6 +13,12 @@ class AgoraInterest(object):
         self.graph_db = graph_db
         #neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
+    @property
+    def interest_node(self):
+        return self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.INTEREST,
+                                                        key='unque_id',
+                                                        value=self.unique_id)
+
     def create_interest(self):
         """
         create an interest node based on the class attributes
