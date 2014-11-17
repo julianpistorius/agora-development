@@ -5,6 +5,6 @@ This repo is a bit of a mess.  This is to hold my attempts at learning py2neo, n
 
 It is all a work in progress.  The tests may run or they may not.
 
-If you are looking for samples of how to use py2neo, there are some simple ones here.
+If you are looking for samples of how to use py2neo (2.0), there are some simple ones here.
 
 TO DO:  APIs with falcon and front end with flask
