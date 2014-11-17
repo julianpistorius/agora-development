@@ -17,7 +17,7 @@ class AgoraGroup(object):
         self.members = []
         self.interests = []
         self.group_leader_username = None
-        self.graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
+        self.graph_db = neo4j.Graph("http://localhost:7474/db/data/")
 
     @property
     def group_node(self):

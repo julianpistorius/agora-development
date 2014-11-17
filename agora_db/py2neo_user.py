@@ -1,8 +1,8 @@
 __author__ = 'Marnee Dearman'
-import py2neo
+from py2neo import Node, Graph
 import uuid
 import collections
-from py2neo import neo4j
+#from py2neo import neo4j
 from agora_types import AgoraRelationship, AgoraLabel
 
 
@@ -18,12 +18,13 @@ class AgoraUser(object):
         self.is_available_for_in_person = True
         # self._interests_list = None
         self.is_admin = False
-        self.graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
+        self.graph_db = Graph("http://localhost:7474/db/data/")
 
     def get_user(self):
-        user_nodes = self.graph_db.find(AgoraLabel.USER, "email", self.email)
-        try:
-            user_node = user_nodes.next()
+        user_node = self.graph_db.legacy.get_or_create_indexed_node(index_name=AgoraLabel.USER,
+                                                                     key='email', value=self.email)
+            #.find(AgoraLabel.USER, "email", self.email)
+        if not user_node is None:
             self.name = user_node["name"]
             self.unique_id = user_node["unique_id"]
             self.mission_statement = user_node["mission_statement"]
@@ -33,30 +34,29 @@ class AgoraUser(object):
             self.is_visible = user_node["is_visible"]
             self.is_available_for_in_person = user_node["is_available_for_in_person"]
             self.is_admin = user_node["is_admin"]
-        except:
-            pass
 
     def create_user(self):
         """
         create a new user based on the attributes
         :return: node
         """
-        self.unique_id = str(uuid.uuid4())
+        unique_id = str(uuid.uuid4())
         new_user_properties = {
-            "name": self.name,
-            "mission_statement": self.mission_statement,
-            "unique_id": self.unique_id,
-            "email": self.email,
-            "is_mentor": self.is_mentor,
-            "is_tutor": self.is_tutor,
-            "is_visible": self.is_visible,
-            "is_available_for_in_person": self.is_available_for_in_person,
-            "is_admin": self.is_admin}
-        new_user = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.USER,
-                                                            key='email', value=self.email,
-                                                            properties=new_user_properties)
-        new_user.add_labels(AgoraLabel.USER)
-        return new_user
+            "name": "Marnee",
+            "mission_statement": "Develop the Agora",
+            "unique_id": unique_id,
+            "email": 'Marnee@agorasociety.com',
+            "is_mentor": True,
+            "is_tutor": True,
+            "is_visible": True,
+            "is_available_for_in_person": True,
+            "is_admin": True}
+        new_user_node = Node.cast(AgoraLabel.USER, new_user_properties)
+        try:
+            self.graph_db.create(new_user_node)
+        except:
+            pass
+        return new_user_node
 
     @property
     def user_node(self):
@@ -64,8 +64,11 @@ class AgoraUser(object):
         get a user neo4j.Node
         :return: neo4j.Node
         """
-        return self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.USER,
-                                                             key='email', value=self.email)
+        return self.graph_db.find_one(AgoraLabel.USER,
+                                      property_key='email',
+                                      property_value=self.email)
+        # return self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.USER,
+        #                                                      key='email', value=self.email)
 
     @property
     def user_interests(self):
@@ -114,7 +117,7 @@ class AgoraUser(object):
         user_interest_relationship = self.graph_db.match(start_node=self.user_node, rel_type=AgoraRelationship.INTERESTED_IN,
                                              end_node=interest_node)
         new_interest_node = user_interest_relationship.next()
-        interest_relationship_properties["unique_id"] = str(uuid.uuid4())
+        #interest_relationship_properties["unique_id"] = str(uuid.uuid4())
         new_interest_node.set_properties(interest_relationship_properties)
         #print new_interest_node
 

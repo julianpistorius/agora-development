@@ -47,18 +47,27 @@ class AgoraInterest(object):
         # else:
         #     return interest_node
 
-    def get_interest(self):
+    def get_interest_by_name(self):
         """
         get interest node
         :return:
         """
-        interest_nodes = self.graph_db.find(AgoraLabel.INTEREST, "name", self.name)
-        try:
-            interest_node = interest_nodes.next()
+        interest_node = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.INTEREST,
+                                                                 key='name', value=self.name)
+        if not interest_node is None:
             self.name = interest_node["name"]
             self.unique_id = interest_node["unique_id"]
             self.description = interest_node["description"]
-            return interest_node
-        except:
-            print 'not found'
-            return None
+
+    def get_interest_by_unique_id(self):
+        """
+        get interest node by unique id
+        sets attributes of this interest instance to properties on node found
+        :return: noe4j.Node
+        """
+        interest_node = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.INTEREST,
+                                                                 key='unique_id', value=self.unique_id)
+        if not interest_node is None:
+            self.name = interest_node["name"]
+            self.unique_id = interest_node["unique_id"]
+            self.description = interest_node["description"]
