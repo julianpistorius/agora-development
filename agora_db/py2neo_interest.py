@@ -1,16 +1,16 @@
 __author__ = 'Marnee Dearman'
-import py2neo
+from py2neo import Graph, Node, Relationship
 import uuid
 import collections
-from py2neo import neo4j
+#from py2neo import neo4j
 from agora_types import AgoraRelationship, AgoraLabel
 
 class AgoraInterest(object):
-    def __init__(self, graph_db):
+    def __init__(self, graph_db=None):
         self.name = None
         self.unique_id = None
         self.description = None
-        self.graph_db = graph_db
+        self.graph_db = Graph()
         #neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
     @property
@@ -24,18 +24,21 @@ class AgoraInterest(object):
         create an interest node based on the class attributes
         :return: node
         """
-        #TO DO -- create as indexed node?
+        #TODO -- create as indexed node?
         self.unique_id = str(uuid.uuid4())
         new_interest_properties = {
             "name": self.name,
             "description": self.description,
             "unique_id": self.unique_id
         }
-        new_interest = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.INTEREST,
-                                                            key='unique_id', value=self.unique_id,
-                                                            properties=new_interest_properties)
-        new_interest.add_labels(AgoraLabel.INTEREST)
-        return new_interest
+
+        new_interest_node = Node.cast(AgoraLabel.INTEREST, new_interest_properties)
+        try:
+            self.graph_db.create(new_interest_node)
+        except:
+            pass
+
+        return new_interest_node
 
         # interest_node = self.get_interest()
         # if interest_node is None:

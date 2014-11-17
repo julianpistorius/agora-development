@@ -1,5 +1,5 @@
 __author__ = 'Marnee Dearman'
-from py2neo import Node, Graph
+from py2neo import Node, Graph, Path, Relationship
 import uuid
 import collections
 #from py2neo import neo4j
@@ -7,7 +7,7 @@ from agora_types import AgoraRelationship, AgoraLabel
 
 
 class AgoraUser(object):
-    def __init__(self, graph_db):
+    def __init__(self, graph_db=None):
         self.name = None
         self.unique_id = None
         self.mission_statement = None
@@ -42,10 +42,10 @@ class AgoraUser(object):
         """
         unique_id = str(uuid.uuid4())
         new_user_properties = {
-            "name": "Marnee",
-            "mission_statement": "Develop the Agora",
+            "name": self.name,
+            "mission_statement": self.mission_statement,
             "unique_id": unique_id,
-            "email": 'Marnee@agorasociety.com',
+            "email": self.email.lower(),
             "is_mentor": True,
             "is_tutor": True,
             "is_visible": True,
@@ -75,7 +75,8 @@ class AgoraUser(object):
         """ get user interests
         :return: list of interests
         """
-        user_interests = self.graph_db.match(start_node=self.user_node, rel_type=AgoraRelationship.INTERESTED_IN,
+        user_interests = self.graph_db.match(start_node=self.user_node,
+                                             rel_type=AgoraRelationship.INTERESTED_IN,
                                              end_node=None)
         #create a list of tuples of interests and the users's relationship to them
         interests_list = []
@@ -98,7 +99,7 @@ class AgoraUser(object):
         # return [item.end_node["name"] for item in user_interests]
         return goals_list
 
-    def add_interest(self, interest_id, interest_relationship_properties):
+    def add_interest(self, interest_node):
         """ Add interest to user
         :param interest:
         :return: none
@@ -106,10 +107,12 @@ class AgoraUser(object):
         # check that interest_description is a dictionary?
 
         #get interest node with interest_id (interest unique_id)
-        interest_node = self.graph_db.get_indexed_node(index_name=AgoraLabel.INTEREST,
-                                                       key='unique_id', value=interest_id)
+        interest_node = self.graph_db.find_one(AgoraLabel.USER,
+                                               property_key='unique_id',
+                                               property_value=interest_id)
+
         #create relationship between user and interest node
-        neo4j.Path(self.user_node,
+        self.graph_db.Path(self.user_node,
                    AgoraRelationship.INTERESTED_IN,
                    interest_node).get_or_create(graph_db=self.graph_db)
 
@@ -138,7 +141,12 @@ class AgoraUser(object):
         # user_node = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.USER,
         #                                                      key='email', value=self.email)
         #create relationship between user and interest node
-        neo4j.Path(self.user_node,
+
+        goal_rel = Relationship(self.user_node, AgoraRelationship.HAS_GOAL, goal_node, goal_relationship_properties)
+        self.graph_db.create_unique(goal_rel)
+
+
+        Path(self.user_node,
                    AgoraRelationship.HAS_GOAL,
                    goal_node).get_or_create(graph_db=self.graph_db)
         #TODO set properties on the relationship -- may use a unique id as the key
