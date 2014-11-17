@@ -1,18 +1,21 @@
 __author__ = 'Marnee Dearman'
 
+
 class AgoraRelationship(object):
     INTERESTED_IN = "INTERESTED_IN"
     SPECIALIZED_IN = "SPECIALIZED_IN"
     IS_A = "IS_A"
     LEADS = "LEADS"
     MEMBER_OF = "MEMBER_OF"
-    STUDIES = "STUDIES"
+    STUDIES_WITH = "STUDIES_WITH"
     LEARNING = "LEARNING"
     LOCATED_IN = "LOCATED_IN"
     HEADS = "HEADS"
     ACHIEVED = "ACHIEVED"
     HAS_GOAL = "HAS_GOAL"
     GOAL_INTEREST = "GOAL_INTEREST"
+    ACHIEVEMENT_IN = "ACHIEVEMENT_IN"
+
 
 class AgoraLabel(object):
     ACHIEVEMENT = "ACHIEVEMENT"
@@ -28,7 +31,7 @@ class AgoraLabel(object):
     ORGANIZATION = "ORGANIZATION"
 
 # class AgoraRelationship(Enum):
-#     INTERESTED_IN = "INTERESTED_IN",
+# INTERESTED_IN = "INTERESTED_IN",
 #     SPECIALIZED_IN = "SPECIALIZED_IN",
 #     IS_A = "IS_A",
 #     LEADS = "LEADS",

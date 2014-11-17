@@ -2,7 +2,7 @@ __author__ = 'Marnee Dearman'
 import py2neo
 import uuid
 import collections
-from py2neo import neo4j
+from py2neo import Graph, Node, Relationship
 from agora_types import AgoraRelationship, AgoraLabel
 
 class AgoraGoal(object):
@@ -14,7 +14,7 @@ class AgoraGoal(object):
         self.end_date = None
         self.interests = []
         self.achievements = []
-        self.graph_db = neo4j.Graph("http://localhost:7474/db/data/")
+        self.graph_db = Graph()
 
     @property
     def goal_node(self):
@@ -22,10 +22,21 @@ class AgoraGoal(object):
         get a single goal node based on the attributes of the goal
         :return: neo4j.Node
         """
-        goal_node = self.graph_db.get_or_create_indexed_node(AgoraLabel.GOAL,
-                                                             key='unique_id',
-                                                             value=self.unique_id)
+        goal_node = self.graph_db.find_one(AgoraLabel.GOAL,
+                                           property_key='unique_id',
+                                           property_value=self.unique_id)
         return goal_node
+
+    @property
+    def goal_interests(self):
+        goal_interests = self.graph_db.match(start_node=self.goal_node,
+                                             rel_type=AgoraRelationship.GOAL_INTEREST,
+                                             end_node=None)
+        goal_interests_list = []
+        for item in goal_interests:
+            goal_interests_list.append((item["name"], item["description"]))
+
+        return goal_interests_list
 
     def create_goal(self):
         """
@@ -41,21 +52,8 @@ class AgoraGoal(object):
             "unique_id": self.unique_id,
             "start_date": self.start_date,
             "end_date": self.end_date}
-
-        new_goal = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.GOAL, key='unique_id',
-                                                            value=self.unique_id,
-                                                            properties=new_goal_properties)
-        new_goal.add_labels(AgoraLabel.GOAL)
+        new_goal = Node.cast(AgoraLabel.GOAL, new_goal_properties)
         return new_goal
-
-        #
-        # new_goal = neo4j.Node.abstract(name=self.title, desciption=self.description, unique_id=self.unique_id)
-        # created_goal, = self.graph_db.create(new_goal)
-        # created_goal.add_labels(AgoraLabel.GOAL)
-        # #self.add_goal(created_goal)
-        # return created_goal
-        # else:
-        #     return goal_node
 
     def update_goal(self):
         """
@@ -67,17 +65,12 @@ class AgoraGoal(object):
     def link_goal_to_achievement(self):
         pass
 
-    def link_goal_to_interests(self, goal_node, interests_unique_id_list):
-        for interest_unique_id in interests_unique_id_list:
-            #GET interest node with interest_id (interest unique_id)
-            interest_node = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.INTEREST,
-                                                                      key='unique_id',
-                                                                      value=interest_unique_id)
-
-            #CREATE relationship between goal and interest node
-            neo4j.Path(goal_node,
-                       AgoraRelationship.GOAL_INTEREST,
-                       interest_node).get_or_create(graph_db=self.graph_db)
+    def add_interest(self, interest_node):
+        goal_interest_relationship = Relationship(start_node=self.goal_node,
+                                                  rel=AgoraRelationship.GOAL_INTEREST,
+                                                  end_node=interest_node)
+        self.graph_db.create_unique(goal_interest_relationship)
+        return
 
     def get_goal(self):
         pass

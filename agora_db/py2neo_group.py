@@ -1,9 +1,10 @@
 __author__ = 'Marnee Dearman'
-import py2neo
 import uuid
-import collections
-from py2neo import neo4j
+
+from py2neo import Graph, Node, Relationship
+
 from agora_types import AgoraRelationship, AgoraLabel
+
 
 class AgoraGroup(object):
     def __init__(self, graph_db):
@@ -17,7 +18,7 @@ class AgoraGroup(object):
         self.members = []
         self.interests = []
         self.group_leader_username = None
-        self.graph_db = neo4j.Graph("http://localhost:7474/db/data/")
+        self.graph_db = Graph()
 
     @property
     def group_node(self):
@@ -25,9 +26,9 @@ class AgoraGroup(object):
         get a group node based on the unique id attribute
         :return: neo4j.Node
         """
-        return self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.STUDYGROUP,
-                                                        key='unique_id',
-                                                        value=self.unique_id)
+        return self.graph_db.find_one(AgoraLabel.STUDYGROUP,
+                                      property_key='unique_id',
+                                      property_value=self.unique_id)
 
     @property
     def group_interests(self):
@@ -36,8 +37,8 @@ class AgoraGroup(object):
         """
         group_interests = self.graph_db.match(start_node=self.group_node,
                                               rel_type=AgoraRelationship.INTERESTED_IN,
-                                             end_node=None)
-        #create a list of tuples of interests and the users's relationship to them
+                                              end_node=None)
+        # create a list of tuples of interests and the users's relationship to them
         interests_list = []
         for item in group_interests:
             interests_list.append((item.end_node["name"], item["description"]))
@@ -47,7 +48,7 @@ class AgoraGroup(object):
     def create_group(self):
         """
         create new study group or circle
-        :return:
+        :return: py2neo Node
         """
         self.unique_id = str(uuid.uuid4())
         new_group_properties = {
@@ -59,23 +60,26 @@ class AgoraGroup(object):
             "meeting_location": self.meeting_location,
             "next_meeting_date": self.next_meeting_date,
         }
-        new_group = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.STUDYGROUP,
-                                                             key='name', value=self.name,
-                                                             properties=new_group_properties)
-        new_group.add_labels(AgoraLabel.STUDYGROUP)
-        return new_group
 
-    def add_interest(self, interest_id, interest_description):
+        new_group_node = Node.cast(AgoraLabel.STUDYGROUP, new_group_properties)
+        self.graph_db.create(new_group_node)
+
+        return new_group_node
+
+    def add_interest(self, interest_node):
         """
         link interests to a study group
-        :return:
+        :return: list of group interests
         """
-        interest_node = self.graph_db.get_indexed_node(index_name=AgoraLabel.INTEREST,
-                                                       key='unique_id', value=interest_id)
-        #CREATE the RELATIONSHIP BETWEEN INTEREST AND GROUP
-        neo4j.Path(self.group_node, AgoraRelationship.INTERESTED_IN,
-                   interest_node).get_or_create(graph_db=self.graph_db)
-        #TODO set properties on RELATIONSHIP
+
+        group_interest_relationship = Relationship(start_node=interest_node,
+                                                   rel=AgoraRelationship.INTERESTED_IN,
+                                                   end_node=self.group_node)
+
+        self.graph_db.create(group_interest_relationship)
+
+        # TODO set properties on RELATIONSHIP
+        return self.group_interests
 
     def update_group(self):
         pass

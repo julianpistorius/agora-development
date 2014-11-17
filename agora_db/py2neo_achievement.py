@@ -1,8 +1,8 @@
 __author__ = 'Marnee Dearman'
-import py2neo
 import uuid
-import collections
-from py2neo import neo4j
+
+from py2neo import Graph, Node
+
 from agora_types import AgoraRelationship, AgoraLabel
 
 class AgoraAchievement(object):
@@ -13,3 +13,19 @@ class AgoraAchievement(object):
         self.title = None
         self.is_visible = True
         self.date = None
+        self.graph_db = Graph()
+
+    @property
+    def achievement_node(self):
+        return self.graph_db.find_one(AgoraLabel.ACHIEVEMENT,
+                                      property_key='unique_id',
+                                      property_value=self.unique_id)
+
+    @property
+    def achievement_interests(self):
+        """
+        get list of interests linked to this achievement
+        :return:
+        """
+        # ach_interests = self.graph_db.match(start_node=self.achievement_node,
+        #                                     rel_type=AgoraRelationship.)

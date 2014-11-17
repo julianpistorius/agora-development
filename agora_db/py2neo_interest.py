@@ -1,9 +1,11 @@
 __author__ = 'Marnee Dearman'
-from py2neo import Graph, Node, Relationship
 import uuid
-import collections
-#from py2neo import neo4j
-from agora_types import AgoraRelationship, AgoraLabel
+
+from py2neo import Graph, Node
+
+# from py2neo import neo4j
+from agora_types import AgoraLabel
+
 
 class AgoraInterest(object):
     def __init__(self, graph_db=None):
@@ -15,14 +17,14 @@ class AgoraInterest(object):
 
     @property
     def interest_node(self):
-        return self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.INTEREST,
-                                                        key='unque_id',
-                                                        value=self.unique_id)
+        return self.graph_db.find_one(AgoraLabel.INTEREST,
+                                      property_key='unique_id',
+                                      property_value=self.unique_id)
 
     def create_interest(self):
         """
         create an interest node based on the class attributes
-        :return: node
+        :return: py2neo Node
         """
         #TODO -- create as indexed node?
         self.unique_id = str(uuid.uuid4())
@@ -55,12 +57,15 @@ class AgoraInterest(object):
         get interest node
         :return:
         """
-        interest_node = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.INTEREST,
-                                                                 key='name', value=self.name)
+        interest_node = self.graph_db.find_one(AgoraLabel.INTEREST,
+                                               property_key='name',
+                                               property_value=self.name)
+
         if not interest_node is None:
             self.name = interest_node["name"]
             self.unique_id = interest_node["unique_id"]
             self.description = interest_node["description"]
+        return interest_node
 
     def get_interest_by_unique_id(self):
         """
@@ -68,9 +73,12 @@ class AgoraInterest(object):
         sets attributes of this interest instance to properties on node found
         :return: noe4j.Node
         """
-        interest_node = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.INTEREST,
-                                                                 key='unique_id', value=self.unique_id)
+        interest_node = self.graph_db.find_one(AgoraLabel.INTEREST,
+                                               property_key='unique_id',
+                                               property_value=self.unique_id)
         if not interest_node is None:
             self.name = interest_node["name"]
             self.unique_id = interest_node["unique_id"]
             self.description = interest_node["description"]
+
+        return interest_node

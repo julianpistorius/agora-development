@@ -21,9 +21,9 @@ class AgoraUser(object):
         self.graph_db = Graph("http://localhost:7474/db/data/")
 
     def get_user(self):
-        user_node = self.graph_db.legacy.get_or_create_indexed_node(index_name=AgoraLabel.USER,
-                                                                     key='email', value=self.email)
-            #.find(AgoraLabel.USER, "email", self.email)
+        user_node = self.graph_db.find_one(AgoraLabel.USER,
+                                           property_key='email',
+                                           property_value=self.email)
         if not user_node is None:
             self.name = user_node["name"]
             self.unique_id = user_node["unique_id"]
@@ -99,30 +99,45 @@ class AgoraUser(object):
         # return [item.end_node["name"] for item in user_interests]
         return goals_list
 
+    @property
+    def user_groups(self):
+        """
+
+        :return: list of tuples of the groups
+        """
+        user_groups = self.graph_db.match(start_node=self.user_node, rel_type=AgoraRelationship.STUDIES_WITH,
+                                             end_node=None)
+        #create a list of tuples of interests and the users's relationship to them
+        groups_list = []
+        for item in user_groups:
+            groups_list.append((item.end_node["name"], item["unique_id"]))
+        # return [item.end_node["name"] for item in user_interests]
+        return groups_list
+
+    @property
+    def user_orgs(self):
+        """
+
+        :return:
+        """
+        user_orgs = self.graph_db.match(start_node=self.user_node,
+                                        rel_type=AgoraRelationship.MEMBER_OF,
+                                        end_node=None)
+        orgs_list = []
+        for item in user_orgs:
+            orgs_list.append(item.end_node["name"])
+        return orgs_list
+
     def add_interest(self, interest_node):
         """ Add interest to user
-        :param interest:
-        :return: none
+        :param interest_node:py2neo Node
+        :return: List of interests
         """
-        # check that interest_description is a dictionary?
-
-        #get interest node with interest_id (interest unique_id)
-        interest_node = self.graph_db.find_one(AgoraLabel.USER,
-                                               property_key='unique_id',
-                                               property_value=interest_id)
-
-        #create relationship between user and interest node
-        self.graph_db.Path(self.user_node,
-                   AgoraRelationship.INTERESTED_IN,
-                   interest_node).get_or_create(graph_db=self.graph_db)
-
-        #get INTERESTED_IN relationship between user and interest -- set the relationship description
-        user_interest_relationship = self.graph_db.match(start_node=self.user_node, rel_type=AgoraRelationship.INTERESTED_IN,
-                                             end_node=interest_node)
-        new_interest_node = user_interest_relationship.next()
-        #interest_relationship_properties["unique_id"] = str(uuid.uuid4())
-        new_interest_node.set_properties(interest_relationship_properties)
-        #print new_interest_node
+        user_interest_relationship = Relationship(start_node=self.user_node,
+                                                  rel=AgoraRelationship.INTERESTED_IN,
+                                                  end_node=interest_node)
+        self.graph_db.create_unique(user_interest_relationship)
+        return self.user_interests
 
     def update_user(self):
         pass
@@ -134,32 +149,42 @@ class AgoraUser(object):
     def add_goal(self, goal_node, goal_relationship_properties=None):
         """
         Add goal to user
-        :param goal_node:
-        :return:
+        :param goal_node: py2neo Node
+        :return: List of user goals
         """
         #get user node with unique id
         # user_node = self.graph_db.get_or_create_indexed_node(index_name=AgoraLabel.USER,
         #                                                      key='email', value=self.email)
         #create relationship between user and interest node
+        user_goal_relationship = Relationship(start_node=self.user_node,
+                                              rel=AgoraRelationship.HAS_GOAL,
+                                              end_node=goal_node)
 
-        goal_rel = Relationship(self.user_node, AgoraRelationship.HAS_GOAL, goal_node, goal_relationship_properties)
-        self.graph_db.create_unique(goal_rel)
-
-
-        Path(self.user_node,
-                   AgoraRelationship.HAS_GOAL,
-                   goal_node).get_or_create(graph_db=self.graph_db)
+        self.graph_db.create_unique(user_goal_relationship)
         #TODO set properties on the relationship -- may use a unique id as the key
-        goal_relationship_properties["unique_id"] = str(uuid.uuid4())
+        return self.user_goals
 
     def add_group(self, group_node, group_relationship_properties=None):
         """
         Add user as member of group
-        :param group_node:
+        :param group_node: py2neo Node
         :return:
         """
-        neo4j.Path(self.user_node,
-                   AgoraRelationship.MEMBER_OF,
-                   group_node).get_or_create(graph_db=self.graph_db)
+
+        user_group_relationship = Relationship(start_node=self.user_node,
+                                               rel=AgoraRelationship.MEMBER_OF,
+                                               end_node=group_node)
+        self.graph_db.create_unique(user_group_relationship)
         #TODO set properties on the relationsip
-        group_relationship_properties["unique_id"] = str(uuid.uuid4())
+        # group_relationship_properties["unique_id"] = str(uuid.uuid4())
+
+    def add_organization(self, org_node):
+        """
+        add user to organization
+        :param org_node: py2neo Node
+        :return: list of tuple of interests
+        """
+        user_org_relationship = Relationship(start_node=self.user_node,
+                                             rel=AgoraRelationship.MEMBER_OF,
+                                             end_node=org_node)
+        self.graph_db.create_unique(user_org_relationship)
